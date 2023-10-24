@@ -29,8 +29,8 @@ export default function Main() {
   b["yo"]="ё";b["i"]="й";b["ts"]="ц";b["u"]="у";b["k"]="к";b["e"]="е";b["n"]="н";b["g"]="г";b["sh"]="ш";b["sch"]="щ";b["z"]="з";b["h"]="х";b["’"]="ъ";
   b["F"]="Ф";b["I"]="Ы";b["V"]="В";b["A"]="А";b["P"]="П";b["R"]="Р";b["O"]="О";b["L"]="Л";b["D"]="Д";b["J"]="Ж";//b["E"]="Э";
   b["f"]="ф";b["i"]="ы";b["v"]="в";b["a"]="а";b["p"]="п";b["r"]="р";b["o"]="о";b["l"]="л";b["d"]="д";b["j"]="ж";//b["e"]="э";
-  b["Ya"]="Я";b["Ch"]="Ч";b["S"]="С";b["M"]="М";b["I"]="И";b["T"]="Т";b["'"]="Ъ";b["B"]="Б";b["Yu"]="Ю";
-  b["ya"]="я";b["ch"]="ч";b["s"]="с";b["m"]="м";b["i"]="и";b["t"]="т";b["'"]="ъ";b["b"]="б";b["yu"]="ю";
+  b["Ya"]="Я";b["Ch"]="Ч";b["S"]="С";b["M"]="М";b["I"]="И";b["T"]="Т";b["'"]="Ъ";b["B"]="Б";b["Yu"]="Ю"; b["Sch"] = "Сч";
+  b["ya"]="я";b["ch"]="ч";b["s"]="с";b["m"]="м";b["i"]="и";b["t"]="т";b["'"]="ъ";b["b"]="б";b["yu"]="ю"; b["sch"] = "сч" 
   b["q"] = "қ";b["Q"] = "Қ";b["h"] = "ҳ"; b["H"] = "Ҳ"; b["o'"] = "ў"; b["O'"] = "Ў";
   b["y"] = "й";b["Y"] = "Й";b["G'"] = "Ғ"; b["g'"] = "ғ";
 
@@ -93,8 +93,8 @@ export default function Main() {
             i++;          
           }
           else if((char === "S" || char === "s") && i < text.length-2 && (text[i+1] === "c" || text[i+1] === "C") && (text[i+2] === "h" || text[i+2] === "H")){
-            char += "ch";
-            i++;
+            char += "ch" 
+            i += 2;
           }
           else if((char === "C" || char === "c") && i < text.length-1 && (text[i+1] === "h" || text[i+1] === "H")){
             char += "h";
@@ -109,7 +109,7 @@ export default function Main() {
             i++;
           }
           else if(char === "E" || char === "e"){
-            if((text[i-1] === " " || b[text[i-1]] === undefined) && !(text[i-1] >= "a" && text[i-1] <= "z" || text[i-1] >= "A" && text[i-1] <= "Z")){
+            if((text[i-1] === " " || b[text[i-1]] === undefined) && !((text[i-1] >= "a" && text[i-1] <= "z") || (text[i-1] >= "A" && text[i-1] <= "Z"))){
               char = text[i] === "E" ? "Э" : "э";
             }         
           }
@@ -157,9 +157,9 @@ export default function Main() {
 
                 <textarea id="words" placeholder={defaultPlaceholder} maxLength={100000} rows={15} cols={50}/>
                 
-                <Button variant="contained" onClick={getResult}>Convert <img className="btn-icon" src={convert} /> </Button>
+                <Button variant="contained" onClick={getResult}>Convert <img className="btn-icon" src={convert} alt="logo"/> </Button>
                 <div className="wrapper">
-                  <button className="copy-btn" onClick={copyResult}>{copy ? "Nusxalandi" : ""} <img src={copyIcon}/> </button> 
+                  <button className="copy-btn" onClick={copyResult}>{copy ? "Nusxalandi" : ""} <img src={copyIcon} alt="copy"/> </button> 
                   <textarea id="result" maxLength={100000} rows={15} cols={50} placeholder={defaultPlaceholder === "Matnni kiriting..." ? "Натижа : Крилча матн" : "Natija : Lotincha matn"}/>
                 </div>
             </div>
